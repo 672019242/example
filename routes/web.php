@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileInformationController;
@@ -31,10 +30,10 @@ use App\Http\Controllers\TaskController;
 //     return view('profile', ['name'=> $name]);
 // });
 
+//Route::get('profile/{identifier}', [ProfileInformationController::class, '__invoke']);
 
 Route::get('/', HomeController::class);
 
-//Route::get('profile/{identifier}', [ProfileInformationController::class, '__invoke']);
 Route::get('profile', [ProfileInformationController::class, '__invoke']);
 
 Route::get('tasks', [TaskController::class, 'index']);
@@ -50,7 +49,5 @@ Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
 Route::get('contact', [contactController::class, 'create']);
 
 Route::post('contact', [contactController::class, 'store']);
-
-
 
 Route::get('about', [AboutController::class, '__invoke']);
