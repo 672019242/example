@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Task">
     <h1>Tasks</h1>
     <form action="/tasks" method="post">
     
@@ -16,7 +16,7 @@
         @foreach ($tasks as $index => $tasks)
             <li>
                 
-              {{ $index + 1 }} -  {{$tasks->nama}}
+              {{ $index + 1 }} -  {{$tasks->nama}} - <a style="color: red" href="/tasks/{{ $tasks -> id}}/edit"> edit </a>
             </li>
         @endforeach
 

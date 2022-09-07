@@ -39,8 +39,11 @@ Route::get('profile', [ProfileInformationController::class, '__invoke']);
 
 Route::get('tasks', [TaskController::class, 'index']);
 
-
 Route::post('tasks', [TaskController::class, 'store']);
+
+Route::get('tasks/{id}/edit', [TaskController::class, 'edit']);
+
+Route::put('tasks/{id}', [TaskController::class, 'update']);
 
 Route::get('contact', [contactController::class, 'create']);
 

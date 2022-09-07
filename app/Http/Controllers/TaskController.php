@@ -18,8 +18,6 @@ class TaskController extends Controller
 
     }
 
-
-
     public function store(Request $request){
 
         DB::table('tasks')->insert([
@@ -31,4 +29,18 @@ class TaskController extends Controller
         return back();
 
     }
+
+    public function edit($id){
+
+        $tasks = DB::table('tasks')->where('id',$id)->first();
+
+        return view('tasks.edit', ['tasks' => $tasks]);
+
+
+    }
+
+    // public function update(Request $request, $id){
+    //     $tasks = DB::table('tasks')->where('id',$id)->update('nama' => $request->nama);
+
+    // }
 }

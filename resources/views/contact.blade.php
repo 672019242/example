@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Contact Page">
     <h1>Contact Page</h1>
     <form action="/contact" method="post">
     
