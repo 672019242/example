@@ -14,9 +14,24 @@
 
         
         @foreach ($tasks as $index => $tasks)
-            <li>
+            <li style="margin-bottom: 15px">
                 
-              {{ $index + 1 }} -  {{$tasks->nama}} - <a style="color: red" href="/tasks/{{ $tasks -> id}}/edit"> edit </a>
+              {{ $index + 1 }} -  {{$tasks->nama}} 
+
+              <div>
+
+              <a style="color: skyblue" href="/tasks/{{ $tasks -> id}}/edit"> edit </a>
+
+              <form action="/tasks/{{$tasks->id}}" method="post" style="display: inline"> 
+
+                @csrf
+                @method("delete")
+
+                <button type="submit"> delete</button>
+            
+              </form>
+
+              </div>
             </li>
         @endforeach
 

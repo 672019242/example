@@ -45,8 +45,12 @@ Route::get('tasks/{id}/edit', [TaskController::class, 'edit']);
 
 Route::put('tasks/{id}', [TaskController::class, 'update']);
 
+Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
+
 Route::get('contact', [contactController::class, 'create']);
 
 Route::post('contact', [contactController::class, 'store']);
+
+
 
 Route::get('about', [AboutController::class, '__invoke']);

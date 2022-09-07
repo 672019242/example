@@ -1,6 +1,6 @@
 <x-app-layout title="About">
-    <h1>Contact Page</h1>
-
+    <h1>About</h1>
+<script src={{asset("js/app.js")}}></script>
     @slot('styles')
         <style>
         body {
