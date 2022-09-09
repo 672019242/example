@@ -6,62 +6,54 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileInformationController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterationController;
 
-// #Route::view('/', 'home');
-
-// #Route::get('/', fn () => dd(asset('css/app.css')));
-
-// Route::get('/', fn () => view('home'));
-// Route::view('contact', 'contact');
-// Route::view('about', 'about');
-// #Route::view('profile', 'profile');
-// Route::view('posts/first-post', 'posts.show');
-
-// #$appName = "laravel 8";
-// #Route::view('/', 'home', ['appName' => $appName]);
-
-// Route::get('profile', function (Request $request) {
-
-//     // compact('name') =  ['name' => $name]
-
-//     $name = $request->name;
-
-//     return view('profile', ['name'=> $name]);
-// });
-
-//Route::get('profile/{identifier}', [ProfileInformationController::class, '__invoke']);
-
-
-
-Route::resource('tasks', TaskController::class);
-
 Route::get('/', HomeController::class);
+
+
+
+
 
 Route::get('profile', [ProfileInformationController::class, '__invoke']);
 
-// Route::get('tasks', [TaskController::class, 'index']);
-
-// Route::post('tasks', [TaskController::class, 'store']);
-
-// Route::get('tasks/{id}/edit', [TaskController::class, 'edit']);
-
-// Route::put('tasks/{id}', [TaskController::class, 'update']);
-
-// Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
 
 Route::get('contact', [contactController::class, 'create']);
 
 Route::post('contact', [contactController::class, 'store']);
 
+
 Route::get('about', [AboutController::class, '__invoke']);
+
 
 Route::get('users', [UserController::class, 'index']);
 
 Route::get('users/{user:username}', [UserController::class, 'show'])->name('users.show');
 
-Route::get('register', [RegisterationController::class, 'create'])->name('register');
 
-Route::post('register', [RegisterationController::class, 'store'])->name('register');
+Route::middleware('auth')->group(function(){
+
+    Route::resource('tasks', TaskController::class);
+    Route::post('logout', LogoutController::class)->name('logout');
+
+});
+
+
+Route::middleware('guest')->group(function(){
+
+    Route::get('register', [RegisterationController::class, 'create'])->name('register');
+
+    Route::post('register', [RegisterationController::class, 'store']);
+    
+    
+    Route::get('login', [LoginController::class, 'create'])->name('login');
+    
+    Route::post('login', [LoginController::class, 'store'])->name('login');
+
+
+
+});
+
