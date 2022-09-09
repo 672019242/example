@@ -1,24 +1,21 @@
 <x-app-layout title="Task">
     
-    <div class="card">
-        <div class="card-header">
-            <h1>Edit Nama</h1>
-        </div>
+    <div class="container">
+        <div class="row">
 
-        <div class="card-body">
-            <form action="/tasks/{{$tasks->id}}" method="post">
-        
-                @method ('put')
-        
-                @csrf
-        
-            <input type="text" name="nama" value="{{$tasks -> nama}}" placeholder="The name of task">
-        
-            <button type="submit">Update</button>   
-        
-            </form>
-        </div>
+            <div class="col-md-6">
+                <form action="{{ route('tasks.update', $tasks->id) }}" method="post">
+            
+                    @method ('put')
+            
+                    @csrf
+            
+                   @include('tasks._form')
+            
+                </form>
+            </div>
 
+        </div>
     </div>
 
 </x-app-layout>

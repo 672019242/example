@@ -7,6 +7,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileInformationController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegisterationController;
 
 // #Route::view('/', 'home');
 
@@ -32,22 +34,34 @@ use App\Http\Controllers\TaskController;
 
 //Route::get('profile/{identifier}', [ProfileInformationController::class, '__invoke']);
 
+
+
+Route::resource('tasks', TaskController::class);
+
 Route::get('/', HomeController::class);
 
 Route::get('profile', [ProfileInformationController::class, '__invoke']);
 
-Route::get('tasks', [TaskController::class, 'index']);
+// Route::get('tasks', [TaskController::class, 'index']);
 
-Route::post('tasks', [TaskController::class, 'store']);
+// Route::post('tasks', [TaskController::class, 'store']);
 
-Route::get('tasks/{id}/edit', [TaskController::class, 'edit']);
+// Route::get('tasks/{id}/edit', [TaskController::class, 'edit']);
 
-Route::put('tasks/{id}', [TaskController::class, 'update']);
+// Route::put('tasks/{id}', [TaskController::class, 'update']);
 
-Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
+// Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
 
 Route::get('contact', [contactController::class, 'create']);
 
 Route::post('contact', [contactController::class, 'store']);
 
 Route::get('about', [AboutController::class, '__invoke']);
+
+Route::get('users', [UserController::class, 'index']);
+
+Route::get('users/{user:username}', [UserController::class, 'show'])->name('users.show');
+
+Route::get('register', [RegisterationController::class, 'create'])->name('register');
+
+Route::post('register', [RegisterationController::class, 'store'])->name('register');

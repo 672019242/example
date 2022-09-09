@@ -3,23 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">Create New Task</div>
-    
-          <div class="card-body">
-
-            <form action="/tasks" method="post" class="d-flex">
-        
-              @csrf
-      
-          <input type="text" name="nama" class="form-control me-2" placeholder="The name of task">
-      
-          <button type="submit" class="btn btn-primary">Add</button>   
-      
-            </form>
-    
-          </div>
-        </div>
+          @include('tasks._create')
       </div>
     </div>
 
@@ -32,9 +16,9 @@
 
             <div class="d-flex">
 
-              <a class="btn btn-primary me-2" href="/tasks/{{ $tasks->id }}/edit">edit</a>
+              <a class="btn btn-primary me-2" href="{{ route('tasks.edit', $tasks->id) }}">edit</a>
 
-              <form action="/tasks/{{$tasks->id}}" method="post"> 
+              <form action="{{ route('tasks.destroy', $tasks->id) }}" method="post"> 
 
               @csrf
 

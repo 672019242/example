@@ -3,24 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
-
+use App\Http\Requests\TaskRequest;
 use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
     public function index()
     
     {
-
+        
        $tasks = Task::orderBy('id', 'desc')->get();
 
-       return view('tasks.index', ['tasks' => $tasks]);
+       return view('tasks.index', [
+        
+        'task' => new Task,
+
+        'submit' => 'Create',
+
+        'tasks' => $tasks]);
 
     }
 
-    public function store(Request $request){
+    public function store(TaskRequest $request){
 
         Task::create($request->all());
     
@@ -28,18 +32,17 @@ class TaskController extends Controller
 
     }
 
-    public function edit($id){
-
-        // $tasks = Task::where('id',$id)->first();
-
-        $tasks = Task::find($id);
-
-        return view('tasks.edit', ['tasks' => $tasks]);
-
-
+    public function edit(Task $task)
+    {
+        return view('tasks.edit', [
+            
+            
+            'tasks' => $task,
+            'submit' => 'Update'
+        ]);
     }
 
-    public function update(Request $request, $id){
+    public function update(TaskRequest $request, $id){
 
         Task::find($id)->update(['nama' => $request->nama]);
 
