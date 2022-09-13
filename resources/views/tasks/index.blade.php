@@ -16,8 +16,8 @@
 
             <div class="d-flex">
 
-              <a class="btn btn-primary me-2" href="{{ route('tasks.edit', $tasks->id) }}">edit</a>
-
+              
+              <a class="btn btn-primary me-2 " href="{{ route('tasks.edit', $tasks->id) }}">edit</a>
               <form action="{{ route('tasks.destroy', $tasks->id) }}" method="post"> 
 
               @csrf

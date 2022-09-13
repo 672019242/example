@@ -8,8 +8,11 @@
   
         @csrf
         
-        @include('tasks._form')
+        @include('tasks._form',[
 
+        'tasks' => new App\Models\Task,
+
+      ])
       </form>
 
     </div>

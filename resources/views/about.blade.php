@@ -4,7 +4,7 @@
     @slot('styles')
         <style>
         body {
-            background-color: indigo
+            background-color: white
         }
     </style>
     @endslot

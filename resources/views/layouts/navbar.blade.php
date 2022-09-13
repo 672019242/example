@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg bg-white border-bottom">
   <div class="container">
     <a class="navbar-brand" href="#">Example</a>
@@ -15,7 +16,7 @@
         </li>
             
       @endforeach
-           
+      
     </ul>
       
     <ul class="navbar-nav mb-2 mb-lg-0">
@@ -32,38 +33,25 @@
 
       @else
 
-      <form action="{{ route('logout') }}" method="post">
+        <div class="container"> 
+          <div class="row"> 
+            <div class="col-md-6">
+
+            <form action="{{ route('logout') }}" method="post">
         
-      @csrf
-
-        <button type="submit" class="dropdown-tem"> Logout </button>
-          </form>
+              @csrf
         
-            <li class="nav-item dropdown">
+                <button type="submit" class="dropdown-tem btn btn-secondary mt-2"> Logout </button>
+                  </form>
+          </div>
+        </div>
+        
 
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-
-                {{ Auth::user()->name }}
-
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-                <li> <a class="dropdown-item" href="#">Action</a></li>
-                <li> <a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-          
-                </li>
-                <li> 
-                  <form action="{{ route('logout') }}" method="post">
-                    @csrf
-
-                    <button type="submit" class="dropdown-tem"> Logout </button>
-                </form>
-                 </li>
-              </ul>
+        </div>
 
             @endguest
+
+            
           
       </ul>
       </div>
